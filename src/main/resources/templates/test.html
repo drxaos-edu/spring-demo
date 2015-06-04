@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>TODO list</title>
+</head>
+<body>
+
+<h1>Hello <span th:text="${username}">username</span>! <a href="/logout">logout</a></h1>
+
+<h2>Current time: <span th:text="${now}">time here</span></h2>
+
+<h2>TODOs (<span th:text="${todos.size()}">COUNT</span>):</h2>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>State</th>
+    </tr>
+    <tr th:each="todo : ${todos}">
+        <td th:text="${todo.date.toString()}">time here</td>
+        <td th:text="${todo.desc}">TODO description</td>
+        <td th:text="${todo.done}? 'done!' : 'todo'">todo</td>
+    </tr>
+</table>
+<br/>
+
+<form method="post" action="/add">
+    Add record: <input name="desc" autofocus="autofocus"/>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
